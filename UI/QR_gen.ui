@@ -19,7 +19,7 @@ color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="central_widget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="4" rowspan="7">
+    <item row="0" column="5" rowspan="9">
      <spacer name="right_spacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -46,6 +46,9 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);
 border-radius: 5px;</string>
       </property>
+      <property name="placeholderText">
+       <string>Ex: www.google.com</string>
+      </property>
      </widget>
     </item>
     <item row="0" column="2" colspan="2">
@@ -61,7 +64,7 @@ border-radius: 5px;</string>
       </property>
      </spacer>
     </item>
-    <item row="6" column="2" colspan="2">
+    <item row="8" column="2" colspan="2">
      <spacer name="bottom_spacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -74,7 +77,7 @@ border-radius: 5px;</string>
       </property>
      </spacer>
     </item>
-    <item row="0" column="1" rowspan="7">
+    <item row="0" column="1" rowspan="9">
      <spacer name="left_spacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -87,23 +90,45 @@ border-radius: 5px;</string>
       </property>
      </spacer>
     </item>
-    <item row="5" column="2">
+    <item row="7" column="2">
      <widget class="QLineEdit" name="filename_input">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(100, 100, 100);
 color: rgb(255, 255, 255);
 border-radius: 5px;</string>
       </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QLabel" name="file_name_label">
-      <property name="text">
-       <string>File Name</string>
+      <property name="placeholderText">
+       <string>Ex: myfile</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="3">
+    <item row="6" column="2">
+     <widget class="QLabel" name="file_name_label">
+      <property name="text">
+       <string>File Name Without Extension</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLineEdit" name="scale_input">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(100, 100, 100);
+color: rgb(255, 255, 255);
+border-radius: 5px;</string>
+      </property>
+      <property name="placeholderText">
+       <string>Ex: 1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QLabel" name="scale_label">
+      <property name="text">
+       <string>Scale:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4">
      <widget class="QPushButton" name="generate_button">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(100, 100, 100);</string>
