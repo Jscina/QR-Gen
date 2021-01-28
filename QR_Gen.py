@@ -66,12 +66,17 @@ class Ui_GenerateQR(object):
         self.scale_label.setObjectName("scale_label")
 
         self.gridLayout.addWidget(self.scale_label, 4, 2, 1, 1)
+        self.path_label = QtWidgets.QLabel(self.central_widget)
+        self.path_label.setObjectName("path_label")
+
+        self.gridLayout.addWidget(self.path_label, 7, 3, 1, 1)
+
         self.generate_button = QtWidgets.QPushButton(self.central_widget)
         self.generate_button.setStyleSheet("background-color: rgb(100, 100, 100);")
         self.generate_button.setObjectName("generate_button")
         self.generate_button.clicked.connect(self.gen)
 
-        self.gridLayout.addWidget(self.generate_button, 5, 4, 1, 1)
+        self.gridLayout.addWidget(self.generate_button, 5, 3, 1, 1)
         GenerateQR.setCentralWidget(self.central_widget)
 
         self.retranslateUi(GenerateQR)
@@ -79,13 +84,14 @@ class Ui_GenerateQR(object):
 
     def retranslateUi(self, GenerateQR):
         _translate = QtCore.QCoreApplication.translate
-        GenerateQR.setWindowTitle(_translate("GenerateQR", "MainWindow"))
+        GenerateQR.setWindowTitle(_translate("GenerateQR", "QR Code Generator"))
         self.url_label.setText(_translate("GenerateQR", "Enter Url:"))
         self.url_input.setPlaceholderText(_translate("GenerateQR", "Ex: www.google.com"))
         self.filename_input.setPlaceholderText(_translate("GenerateQR", "Ex: myfile"))
         self.file_name_label.setText(_translate("GenerateQR", "File Name Without Extension"))
         self.scale_input.setPlaceholderText(_translate("GenerateQR", "Ex: 1"))
         self.scale_label.setText(_translate("GenerateQR", "Scale:"))
+        self.path_label.setText(_translate("GenerateQR", "Path to File: None"))
         self.generate_button.setText(_translate("GenerateQR", "Generate"))
 
     # Calls the QR Code generator
@@ -97,15 +103,29 @@ class Ui_GenerateQR(object):
             scale = int(self.scale_input.text())
         except ValueError:
             scale = 6 # Default scale
+
         # Create QR_Code object
         create_qr = QR_Code()
+
         # Generate QR Code
         create_qr.gen_code(url, filename, scale)
-        del url, filename
+
         # Clear input fields
         self.url_input.clear()
         self.scale_input.clear()
         self.filename_input.clear()
+
+        # Check if file is created successfully
+        self.check_success(filename)
+        del url, filename
+
+    def check_success(self, filename: str):
+        # If file exist report path else report failed
+        if os.path.exists(os.path.abspath(f"{filename}.png")):
+            path = os.path.abspath(f"{filename}.png")
+            self.path_label.setText(f"Path to file:\n{path}")
+        else:
+            self.path_label.setText("File creation failed!")
 
 
 if __name__ == "__main__":
