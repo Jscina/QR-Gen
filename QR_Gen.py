@@ -14,7 +14,10 @@ class Ui_GenerateQR(object):
         GenerateQR.resize(800, 600)
         GenerateQR.setStyleSheet("background-color: rgb(0, 0, 0);\n"
                                  "color: rgb(255, 255, 255);")
-        GenerateQR.setWindowIcon(QtGui.QIcon(os.path.abspath('Icon\\qr_gen_icon.ico')))
+        if os.path.exists(os.path.abspath("Icon\\qr_gen_icon.ico")):
+            GenerateQR.setWindowIcon(QtGui.QIcon(os.path.abspath('Icon\\qr_gen_icon.ico')))
+        else:
+            GenerateQR.setWindowIcon(QtGui.QIcon(os.path.abspath('qr_gen_icon.ico')))
         # Set the font
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
