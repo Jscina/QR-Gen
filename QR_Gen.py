@@ -99,6 +99,7 @@ class Ui_GenerateQR(object):
         # Get the input from the lineEdits
         url = self.url_input.text()
         filename = self.filename_input.text()
+
         try:
             scale = int(self.scale_input.text())
         except ValueError:
@@ -108,7 +109,7 @@ class Ui_GenerateQR(object):
         create_qr = QR_Code()
 
         # Generate QR Code
-        create_qr.gen_code(url, filename, scale)
+        create_qr.gen_code(site=url, name=filename, size=scale)
 
         # Clear input fields
         self.url_input.clear()
