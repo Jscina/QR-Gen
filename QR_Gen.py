@@ -106,7 +106,7 @@ class Ui_GenerateQR(object):
         try:
             scale = int(self.scale_input.text())
         except ValueError:
-            scale = 6 # Default scale
+            scale = 6  # Default scale
 
         # Create QR_Code object
         create_qr = QR_Code()
