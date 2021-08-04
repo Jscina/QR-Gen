@@ -1,12 +1,9 @@
 import os
-
-from PyQt5 import QtCore, QtWidgets, QtGui
-
+from PyQt6 import QtCore, QtGui, QtWidgets
 from QR import QR_Code
 
-
-# @Author: Joshua Scina
-# @Version 1.1
+#@Author: Joshua Scina
+#@Version: 2.0
 
 class Ui_GenerateQR(object):
     def setupUi(self, GenerateQR):
@@ -27,26 +24,32 @@ class Ui_GenerateQR(object):
         self.central_widget.setObjectName("central_widget")
         self.gridLayout = QtWidgets.QGridLayout(self.central_widget)
         self.gridLayout.setObjectName("gridLayout")
-
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout.addItem(spacerItem, 0, 5, 9, 1)
-        self.url_label = QtWidgets.QLabel(self.central_widget)
 
+        self.url_label = QtWidgets.QLabel(self.central_widget)
         self.url_label.setObjectName("url_label")
+
         self.gridLayout.addWidget(self.url_label, 2, 2, 1, 1)
         self.url_input = QtWidgets.QLineEdit(self.central_widget)
         self.url_input.setStyleSheet("background-color: rgb(100, 100, 100);\n"
                                      "color: rgb(255, 255, 255);\n"
                                      "border-radius: 5px;")
         self.url_input.setObjectName("url_input")
-
         self.gridLayout.addWidget(self.url_input, 3, 2, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        spacerItem1 = QtWidgets.QSpacerItem(
+            20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout.addItem(spacerItem1, 0, 2, 1, 2)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+
+        spacerItem2 = QtWidgets.QSpacerItem(
+            20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout.addItem(spacerItem2, 8, 2, 1, 2)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+
+        spacerItem3 = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout.addItem(spacerItem3, 0, 1, 9, 1)
+
         self.filename_input = QtWidgets.QLineEdit(self.central_widget)
         self.filename_input.setStyleSheet("background-color: rgb(100, 100, 100);\n"
                                           "color: rgb(255, 255, 255);\n"
@@ -73,9 +76,9 @@ class Ui_GenerateQR(object):
         self.path_label.setObjectName("path_label")
 
         self.gridLayout.addWidget(self.path_label, 7, 3, 1, 1)
-
         self.generate_button = QtWidgets.QPushButton(self.central_widget)
-        self.generate_button.setStyleSheet("background-color: rgb(100, 100, 100);")
+        self.generate_button.setStyleSheet(
+            "background-color: rgb(100, 100, 100);")
         self.generate_button.setObjectName("generate_button")
         self.generate_button.clicked.connect(self.gen)
 
@@ -85,19 +88,7 @@ class Ui_GenerateQR(object):
         self.retranslateUi(GenerateQR)
         QtCore.QMetaObject.connectSlotsByName(GenerateQR)
 
-    def retranslateUi(self, GenerateQR):
-        _translate = QtCore.QCoreApplication.translate
-        GenerateQR.setWindowTitle(_translate("GenerateQR", "QR Code Generator"))
-        self.url_label.setText(_translate("GenerateQR", "Enter Url:"))
-        self.url_input.setPlaceholderText(_translate("GenerateQR", "Ex: www.google.com"))
-        self.filename_input.setPlaceholderText(_translate("GenerateQR", "Ex: myfile"))
-        self.file_name_label.setText(_translate("GenerateQR", "File Name Without Extension"))
-        self.scale_input.setPlaceholderText(_translate("GenerateQR", "Ex: 1"))
-        self.scale_label.setText(_translate("GenerateQR", "Scale:"))
-        self.path_label.setText(_translate("GenerateQR", "Path to File: None"))
-        self.generate_button.setText(_translate("GenerateQR", "Generate"))
-
-    # Calls the QR Code generator
+         # Calls the QR Code generator
     def gen(self):
         # Get the input from the lineEdits
         url = self.url_input.text()
@@ -131,14 +122,28 @@ class Ui_GenerateQR(object):
         else:
             self.path_label.setText("File creation failed!")
 
+    def retranslateUi(self, GenerateQR):
+        _translate = QtCore.QCoreApplication.translate
+        GenerateQR.setWindowTitle(_translate("GenerateQR", "MainWindow"))
+        self.url_label.setText(_translate("GenerateQR", "Enter Url:"))
+        self.url_input.setPlaceholderText(
+            _translate("GenerateQR", "Ex: www.google.com"))
+        self.filename_input.setPlaceholderText(
+            _translate("GenerateQR", "Ex: myfile"))
+        self.file_name_label.setText(_translate(
+            "GenerateQR", "File Name Without Extension"))
+        self.scale_input.setPlaceholderText(_translate("GenerateQR", "Ex: 1"))
+        self.scale_label.setText(_translate("GenerateQR", "Scale:"))
+        self.path_label.setText(_translate("GenerateQR", "Path to File:"))
+        self.generate_button.setText(_translate("GenerateQR", "Generate"))
+
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle("fusion")
     GenerateQR = QtWidgets.QMainWindow()
     ui = Ui_GenerateQR()
     ui.setupUi(GenerateQR)
     GenerateQR.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
