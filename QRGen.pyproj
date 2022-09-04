@@ -29,9 +29,8 @@
     <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Create_exe.py" />
     <Compile Include="QR.py" />
-    <Compile Include="QR_Gen.py" />
+    <Compile Include="QR_Engine.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icon" />
