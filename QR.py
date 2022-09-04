@@ -115,7 +115,7 @@ class Ui_GenerateQR(object):
         del url, filename
 
     def check_success(self, filename: str):
-        # If file exist report path else report failed
+        # If file exist display path else display failed
         if os.path.exists(os.path.abspath(f"{filename}.png")):
             path = os.path.abspath(f"{filename}.png")
             self.path_label.setText(f"Path to file:\n{path}")

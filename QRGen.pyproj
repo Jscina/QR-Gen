@@ -13,6 +13,10 @@
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>Global|PythonCore|3.10</InterpreterId>
     <IsWindowsApplication>True</IsWindowsApplication>
+    <PublishUrl>C:\Users\joshs\OneDrive\Documents\GitHub Repos</PublishUrl>
+    <TestFramework>unittest</TestFramework>
+    <UnitTestPattern>test.py</UnitTestPattern>
+    <UnitTestRootDirectory>.</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
