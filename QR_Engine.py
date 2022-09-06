@@ -24,5 +24,5 @@ class Create_Exe:
         ])
 
 if __name__ == "__main__":
-    build = Create_Exe("QR_Gen")
+    build = Create_Exe("QR")
     build.run()
